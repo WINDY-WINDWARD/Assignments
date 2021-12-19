@@ -5,8 +5,8 @@
 int Calc(int DataSize);
 int Specific_calc(int r, int c, int Badd, int);
 int All_calc(int r, int c, int Badd, int dataSize);
-int Row_major(int Badd, int dataSize, int TCols, int row, int column);
-int Col_major(int Badd, int dataSize, int Trows, int row, int column);
+int Row_major(int Badd, int dataSize, int TCols, int Srow, int Scolumn);
+int Col_major(int Badd, int dataSize, int Trows, int Srow, int Scolumn);
 
 int main()
 {
@@ -84,16 +84,16 @@ int Specific_calc(int r, int c, int Badd, int dataSize)
     return 0;
 }
 
-int Col_major(int Badd, int dataSize, int Trows, int row, int column)
+int Col_major(int Badd, int dataSize, int Trows, int Srow, int Scolumn)
 {
-    int result_add = Badd + (dataSize * (Trows * column + row));
+    int result_add = Badd + (dataSize * (Trows * Scolumn + Srow));
     //printf("the address of that matrix location is: %d \n",result_add);
     return result_add;
 }
 
-int Row_major(int Badd, int dataSize, int TCols, int row, int column)
+int Row_major(int Badd, int dataSize, int TCols, int Srow, int Scolumn)
 {
-    int result_add = Badd + (dataSize * (TCols * row + column));
+    int result_add = Badd + (dataSize * (TCols * Srow + Scolumn));
     //printf("the address of that matrix location is: %d \n",result_add);
     return result_add;
 }
