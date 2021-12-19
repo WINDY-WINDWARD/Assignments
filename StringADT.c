@@ -68,24 +68,30 @@ int main()
         sub[c] = '\0';
 
         printf("Required substring is \"%s\"\n", sub); // '\"' to print "
-
-        return 0;
     }
     if (choice == 4)
     {
-        char str1[20]; // declaration of char array
-        char str2[20]; // declaration of char array
-        int value;     // declaration of integer variable
+        char str1[100];
+        char str2[100];
+        int value;
         printf("Enter the first string : ");
         scanf("%s", str1);
         printf("Enter the second string : ");
         scanf("%s", str2);
-        // comparing both the strings using strcmp() function
-        value = strcmp(str1, str2);
-        if (value == 0)
-            printf("strings are same");
+        int flag = 0, i = 0;
+        while (str1[i] != '\0' && str2[i] != '\0') // comparing strings while checking for termination(end of line)
+        {
+            if (str1[i] != str2[i])
+            {
+                flag = 1;
+                break;
+            }
+            i++;
+        }
+        if (flag == 0)
+            printf("strings are same\n");
         else
-            printf("strings are not same");
+            printf("strings are not same\n");
         return 0;
     }
 
