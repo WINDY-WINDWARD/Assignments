@@ -4,9 +4,9 @@
 
 int Calc(int DataSize);
 int Specific_calc(int r, int c, int Badd, int);
-int All_calc(int r, int c, int Badd,int dataSize);
-int Row_major(int Badd,int dataSize,int TCols,int row,int column);
-int Col_major(int Badd,int dataSize,int Trows,int row,int column);
+int All_calc(int r, int c, int Badd, int dataSize);
+int Row_major(int Badd, int dataSize, int TCols, int row, int column);
+int Col_major(int Badd, int dataSize, int Trows, int row, int column);
 
 int main()
 {
@@ -52,10 +52,10 @@ int Calc(int DataSize)
     printf("2.All Element\n");
     scanf("%d", &choice);
     if (choice == 1)
-        Specific_calc(r, c, Badd,DataSize);
+        Specific_calc(r, c, Badd, DataSize);
     else if (choice == 2)
     {
-        All_calc(r,c,Badd,DataSize);
+        All_calc(r, c, Badd, DataSize);
     }
     else
         printf("Check your Input");
@@ -63,7 +63,7 @@ int Calc(int DataSize)
     return 0;
 }
 
-int Specific_calc( int r, int c, int Badd,int dataSize)
+int Specific_calc(int r, int c, int Badd, int dataSize)
 {
     //Sr is specific row and Sc is specific coll
     int Sr, Sc, method;
@@ -75,28 +75,30 @@ int Specific_calc( int r, int c, int Badd,int dataSize)
     scanf("%d", &method);
     if (method == 1)
     {
-        printf("The address of the matrix position is: %d \n",Row_major(Badd,dataSize,r,Sr,Sc));
+        printf("The address of the matrix position is: %d \n", Row_major(Badd, dataSize, r, Sr, Sc));
     }
     else
     {
-        printf("The address of the matrix position is: %d \n",Col_major(Badd,dataSize,c,Sr,Sc));
+        printf("The address of the matrix position is: %d \n", Col_major(Badd, dataSize, c, Sr, Sc));
     }
     return 0;
 }
 
-int Col_major(int Badd,int dataSize,int Trows,int row,int column){
-    int result_add = Badd + (dataSize*(Trows*column+row));
+int Col_major(int Badd, int dataSize, int Trows, int row, int column)
+{
+    int result_add = Badd + (dataSize * (Trows * column + row));
     //printf("the address of that matrix location is: %d \n",result_add);
     return result_add;
 }
 
-int Row_major(int Badd,int dataSize,int TCols,int row,int column){
-    int result_add = Badd + (dataSize*(TCols*row+column));
+int Row_major(int Badd, int dataSize, int TCols, int row, int column)
+{
+    int result_add = Badd + (dataSize * (TCols * row + column));
     //printf("the address of that matrix location is: %d \n",result_add);
     return result_add;
 }
 
-int All_calc( int r, int c, int Badd,int dataSize)
+int All_calc(int r, int c, int Badd, int dataSize)
 {
     //Sr is specific row and Sc is specific coll
     int Sr, Sc, method;
@@ -108,20 +110,19 @@ int All_calc( int r, int c, int Badd,int dataSize)
     {
         for (Sr = 0; Sr < r; Sr++)
         {
-            for ( Sc = 0; Sc < c; Sc++)
+            for (Sc = 0; Sc < c; Sc++)
             {
-                printf("The address of the matrix position[%d][%d] is: %d \n",Sr,Sc,Row_major(Badd,dataSize,r,Sr,Sc));
+                printf("The address of the matrix position[%d][%d] is: %d \n", Sr, Sc, Row_major(Badd, dataSize, r, Sr, Sc));
             }
-            
         }
     }
     else
     {
         for (Sr = 0; Sr < r; Sr++)
         {
-            for ( Sc = 0; Sc < c; Sc++)
+            for (Sc = 0; Sc < c; Sc++)
             {
-                printf("The address of the matrix position[%d][%d] is: %d \n",Sr,Sc,Row_major(Badd,dataSize,r,Sr,Sc));
+                printf("The address of the matrix position[%d][%d] is: %d \n", Sr, Sc, Row_major(Badd, dataSize, r, Sr, Sc));
             }
         }
     }

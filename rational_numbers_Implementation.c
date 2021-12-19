@@ -1,53 +1,35 @@
 #include <stdio.h>
 
-typedef struct
-{
-    int arr[2];
-} RATIONAL;
-
-RATIONAL makerational(int a, int b)
-{
-    RATIONAL r;
-    r.arr[0] = a;
-    r.arr[1] = b;
-    return r;
-}
-
-RATIONAL add(RATIONAL r1, RATIONAL r2)
-{
-    RATIONAL r;
-    r.arr[0] = r1.arr[0] * r2.arr[1] + r2.arr[0] * r1.arr[1];
-    r.arr[1] = r1.arr[1] * r2.arr[1];
-    printf("%d %d\n", r.arr[0], r.arr[1]);
-    return r;
-}
-
-/* RATIONAL mult (RATIONAL r1,RATIONAL r2){
-	RATIONAL r;
-	r= r1.arr[0]*r2.arr[0];
-	r= r1.arr[1]*r2.arr[1];
-	return r;
-} */
-
-int equal(RATIONAL r1, RATIONAL r2)
-{
-    if (r1.arr[0] * r2.arr[1] == r2.arr[0] * r1.arr[1])
-    {
-        printf("The Rational is Equal\n");
+int main(){
+    int choice;
+    float a0,a1,b0,b1;
+    printf("Make a selection: \n");
+    printf("1.)Addition \n");
+    printf("2.)Multiplication\n");
+    printf("3.)Equals \n");
+    scanf("%d",&choice);
+    printf("Enter the First Rational Number: \n");
+    scanf("%f %f",&a0,&a1);
+    printf("Enter the Second Rational Number: \n");
+    scanf("%f %f",&b0,&b1);
+    float r0,r1;
+    if (choice == 1){
+        r0=a0*b1+a1*b0;
+        r1=a1*b1;
+        printf("Sum of Rational Numbers is: %f/%f \n",r0,r1);
     }
-    else
-        printf("The Rational is not equal\n");
-}
-
-int main()
-{
-    RATIONAL rn1, rn2;
-    int k;
-    rn1.arr[0] = 2;
-    rn1.arr[1] = 5;
-    rn2.arr[0] = 4;
-    rn2.arr[1] = 10;
-    //add(rn1, rn2);
-    equal(rn1, rn2);
-    return 0;
+    if (choice == 2){
+        r0=a0*b0;
+        r1=a1*b1;
+        printf("Multiplication of Rational Numbers is: %f/%f \n",r0,r1);
+    }
+    if (choice == 3){
+        if (a0*b1 == a1*b0)
+        {
+            printf("rational numbers are Equal");
+        }
+        else{
+            printf("rational numbers are Not Equal");
+        }
+    }
 }
